@@ -2,10 +2,12 @@
 #if HAS_SCREEN
 #include "MeshService.h"
 #include "RTC.h"
+#include "draw/MessageRenderer.h"
 #include "draw/NodeListRenderer.h"
 #include "graphics/ScreenFonts.h"
 #include "graphics/SharedUIDisplay.h"
 #include "graphics/draw/UIRenderer.h"
+#include "graphics/emotes.h"
 #include "main.h"
 #include "meshtastic/config.pb.h"
 #include "modules/ExternalNotificationModule.h"
@@ -120,11 +122,13 @@ void drawCommonHeader(OLEDDisplay *display, int16_t x, int16_t y, const char *ti
             }
         }
 
-        // === Screen Title ===
-        display->setTextAlignment(TEXT_ALIGN_CENTER);
-        display->drawString(SCREEN_WIDTH / 2, y, titleStr);
+        // === Screen Title (with emoji support) ===
+        display->setTextAlignment(TEXT_ALIGN_LEFT);
+        int titleWidth = display->getStringWidth(titleStr);
+        int titleX = (SCREEN_WIDTH - titleWidth) / 2;
+        MessageRenderer::drawStringWithEmotes(display, titleX, y, std::string(titleStr), emotes, numEmotes);
         if (config.display.heading_bold) {
-            display->drawString((SCREEN_WIDTH / 2) + 1, y, titleStr);
+            MessageRenderer::drawStringWithEmotes(display, titleX + 1, y, std::string(titleStr), emotes, numEmotes);
         }
     }
     display->setTextAlignment(TEXT_ALIGN_LEFT);

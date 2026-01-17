@@ -499,20 +499,20 @@ const unsigned char mushroom[] PROGMEM = {
     0x00, 0x00  // Row 15
 };
 
-// 🐮 Cow Face - connected face with ears, eyes, snout and nostrils
+// 🐮 Cow Face - outline style with ears, eyes, snout and nostrils
 const unsigned char cow[] PROGMEM = {
-    0x0C, 0x30, // Row 0  - ears top
-    0x1E, 0x78, // Row 1  - ears wider
-    0xFF, 0xFF, // Row 2  - head top
-    0xFF, 0xFF, // Row 3  - head
-    0x37, 0xEC, // Row 4  - eyes (dark dots)
-    0x37, 0xEC, // Row 5  - eyes
-    0xFF, 0xFF, // Row 6  - face
-    0xFF, 0xFF, // Row 7  - face
-    0xFE, 0x7F, // Row 8  - snout top
-    0xCE, 0x73, // Row 9  - nostrils (holes)
-    0xFE, 0x7F, // Row 10 - snout
-    0xFC, 0x3F, // Row 11 - snout bottom
+    0x00, 0x00, // Row 0  - blank
+    0x03, 0x30, // Row 1  - ears (##..........##)
+    0xF3, 0x33, // Row 2  - ears + head top outline
+    0x10, 0x02, // Row 3  - head sides
+    0x08, 0x04, // Row 4  - head
+    0x68, 0x0B, // Row 5  - eyes (two dots)
+    0x08, 0x04, // Row 6  - head
+    0x08, 0x04, // Row 7  - head
+    0x10, 0x02, // Row 8  - snout top
+    0xC8, 0x04, // Row 9  - nostrils (two dots)
+    0x08, 0x04, // Row 10 - snout
+    0xF0, 0x03, // Row 11 - snout bottom
     0x00, 0x00, // Row 12
     0x00, 0x00, // Row 13
     0x00, 0x00, // Row 14

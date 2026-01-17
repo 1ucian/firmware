@@ -34,6 +34,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "draw/ClockRenderer.h"
 #include "draw/DebugRenderer.h"
 #include "draw/MenuHandler.h"
+#include "draw/MeshTopologyRenderer.h"
 #include "draw/MessageRenderer.h"
 #include "draw/NodeListRenderer.h"
 #include "draw/NotificationRenderer.h"
@@ -1101,6 +1102,10 @@ void Screen::setFrames(FrameFocus focus)
         indicatorIcons.push_back(icon_compass);
     }
 #endif
+    // Mesh Topology View
+    normalFrames[numframes++] = graphics::MeshTopologyRenderer::drawMeshTopology;
+    indicatorIcons.push_back(icon_nodes);
+
     if (RadioLibInterface::instance && !hiddenFrames.lora) {
         fsi.positions.lora = numframes;
         normalFrames[numframes++] = graphics::DebugRenderer::drawLoRaFocused;
